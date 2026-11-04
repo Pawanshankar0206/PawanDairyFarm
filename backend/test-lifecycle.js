@@ -417,6 +417,31 @@ async function runCompleteLifecycleTest() {
   console.log('   ✅ Super Admin credentials and password hash securely verified.\n');
   passedSteps++;
 
+  // Step 16: Verify User Self-Registration / Sign Up
+  console.log('▶ [Step 16] Verifying User Self-Registration (Sign Up)...');
+  db.deleteMany('farm_users', u => u.username === 'pawan_test_signup');
+  const signupPayload = {
+    id: 'USR-SIGNUP-TEST',
+    full_name: 'Pawan Test Operator',
+    username: 'pawan_test_signup',
+    email: 'pawan_signup@dairyflow.com',
+    mobile_number: '+919876500000',
+    password_hash: bcrypt.hashSync('pawanSecret123', 10),
+    role: 'Farm Manager',
+    status: 'Active',
+    created_at: new Date().toISOString()
+  };
+  db.insert('farm_users', signupPayload);
+
+  const registeredUser = db.getOne('farm_users', u => u.username === 'pawan_test_signup');
+  if (!registeredUser) throw new Error('Step 16 failed: Signed up user was not persisted in database.');
+  if (!bcrypt.compareSync('pawanSecret123', registeredUser.password_hash)) {
+    throw new Error('Step 16 failed: Signed up user password verification failed.');
+  }
+  db.deleteMany('farm_users', u => u.username === 'pawan_test_signup');
+  console.log('   ✅ User Sign Up and Bcrypt password verification successfully verified.\n');
+  passedSteps++;
+
   console.log('================================================================');
   console.log(` 🎉 ALL ${passedSteps}/${passedSteps} LIFECYCLE & INTEGRATION VERIFICATION STEPS PASSED!`);
   console.log('================================================================');

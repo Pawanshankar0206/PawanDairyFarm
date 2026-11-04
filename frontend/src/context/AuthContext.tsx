@@ -2,12 +2,22 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, UserRole } from '../types';
 import { api } from '../services/api';
 
+interface SignupData {
+  full_name: string;
+  username: string;
+  email: string;
+  mobile_number?: string;
+  password: string;
+  role?: UserRole;
+}
+
 interface AuthContextType {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (username: string, password: string) => Promise<void>;
+  signup: (userData: SignupData) => Promise<void>;
   logout: () => void;
   hasRole: (...roles: UserRole[]) => boolean;
   canManageUsers: boolean;
@@ -51,6 +61,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(data.user);
   };
 
+  const signup = async (userData: SignupData) => {
+    const data = await api.post<{ token: string; user: User }>('/auth/signup', userData);
+    localStorage.setItem('dairyflow_token', data.token);
+    setToken(data.token);
+    setUser(data.user);
+  };
+
   const logout = () => {
     localStorage.removeItem('dairyflow_token');
     setToken(null);
@@ -76,6 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         isLoading,
         login,
+        signup,
         logout,
         hasRole,
         canManageUsers,

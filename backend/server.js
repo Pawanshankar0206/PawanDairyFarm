@@ -102,6 +102,88 @@ app.post('/api/auth/login', (req, res) => {
   });
 });
 
+// User Signup / Self-Registration
+app.post('/api/auth/signup', (req, res) => {
+  const { full_name, username, email, mobile_number, password, role } = req.body;
+
+  if (!full_name || !username || !email || !password) {
+    return res.status(400).json({ error: 'Full name, username, email, and password are required.' });
+  }
+
+  if (username.length < 3) {
+    return res.status(400).json({ error: 'Username must be at least 3 characters.' });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ error: 'Password must be at least 6 characters long.' });
+  }
+
+  const normalizedUsername = username.trim().toLowerCase();
+  const normalizedEmail = email.trim().toLowerCase();
+
+  const existing = db.getOne('farm_users', u =>
+    (u.username && u.username.toLowerCase() === normalizedUsername) ||
+    (u.email && u.email.toLowerCase() === normalizedEmail)
+  );
+
+  if (existing) {
+    return res.status(400).json({
+      error: existing.username && existing.username.toLowerCase() === normalizedUsername
+        ? 'Username is already taken. Please choose another.'
+        : 'An account with this email already exists.'
+    });
+  }
+
+  const validRoles = [
+    'Owner / Super Admin',
+    'Farm Manager',
+    'Accountant',
+    'Veterinary Staff',
+    'Farm Worker',
+    'Read-only Viewer'
+  ];
+
+  const assignedRole = validRoles.includes(role) ? role : 'Farm Manager';
+  const newId = `USR-${String((db.get('farm_users').length + 1)).padStart(3, '0')}`;
+  const password_hash = bcrypt.hashSync(password, 10);
+
+  const newUser = {
+    id: newId,
+    full_name: full_name.trim(),
+    username: username.trim(),
+    email: normalizedEmail,
+    mobile_number: (mobile_number || '').trim(),
+    password_hash,
+    role: assignedRole,
+    status: 'Active',
+    last_login: new Date().toISOString(),
+    created_at: new Date().toISOString()
+  };
+
+  db.insert('farm_users', newUser);
+  db.logAudit(newUser.id, newUser.username, 'SIGNUP_SUCCESS', 'Auth', `New user registered with role ${assignedRole}`);
+
+  const token = jwt.sign(
+    { id: newUser.id, username: newUser.username, email: newUser.email, role: newUser.role, full_name: newUser.full_name },
+    JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+
+  res.status(201).json({
+    message: 'Account created successfully!',
+    token,
+    user: {
+      id: newUser.id,
+      username: newUser.username,
+      full_name: newUser.full_name,
+      email: newUser.email,
+      role: newUser.role,
+      mobile_number: newUser.mobile_number,
+      status: newUser.status
+    }
+  });
+});
+
 // Current User Profile
 app.get('/api/auth/me', authenticate, (req, res) => {
   const user = db.getOne('farm_users', u => u.id === req.user.id);
