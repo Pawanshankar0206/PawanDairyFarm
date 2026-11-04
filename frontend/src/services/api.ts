@@ -15,7 +15,11 @@ async function handleResponse<T>(res: Response): Promise<T> {
       const data = await res.json();
       errMessage = data.error || data.message || errMessage;
     } catch {
-      errMessage = `${res.status} ${res.statusText}`;
+      if (res.status === 500) {
+        errMessage = 'Server error (500). Please check your connection or try again in a few moments.';
+      } else {
+        errMessage = `${res.status} ${res.statusText || 'Error'}`.trim();
+      }
     }
     throw new Error(errMessage);
   }

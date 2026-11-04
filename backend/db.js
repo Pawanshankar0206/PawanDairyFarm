@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcryptjs';
 
@@ -7,11 +8,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const SOURCE_DB_FILE = path.join(__dirname, 'data', 'dairyflow.json');
-const DATA_DIR = process.env.VERCEL ? '/tmp' : path.join(__dirname, 'data');
+const DATA_DIR = process.env.VERCEL ? os.tmpdir() : path.join(__dirname, 'data');
 const DB_FILE = path.join(DATA_DIR, 'dairyflow.json');
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (e) {
+  console.warn('Could not create DATA_DIR, using in-memory only:', e.message);
 }
 
 // Helper to calculate date relative to today (2026-11-04)
