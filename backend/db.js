@@ -1367,6 +1367,15 @@ class Database {
     return removed[0];
   }
 
+  deleteMany(table, predicate) {
+    if (!this.data[table]) return 0;
+    const initialLen = this.data[table].length;
+    this.data[table] = this.data[table].filter(item => !predicate(item));
+    const removedCount = initialLen - this.data[table].length;
+    if (removedCount > 0) this.save();
+    return removedCount;
+  }
+
   logAudit(userId, username, action, moduleName, details) {
     const log = {
       id: `AUD-${Date.now().toString().slice(-6)}`,

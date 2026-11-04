@@ -9,6 +9,19 @@ async function runCompleteLifecycleTest() {
 
   let passedSteps = 0;
 
+  // Cleanup any leftover test run entities to ensure idempotency
+  db.deleteMany('buffaloes', b => b.id === 'BFL-099');
+  db.deleteMany('buffalo_insemination_records', r => r.id === 'INS-099');
+  db.deleteMany('buffalo_pregnancy_records', r => r.id === 'PREG-099');
+  db.deleteMany('buffalo_calving_records', r => r.id === 'CALV-099');
+  db.deleteMany('calves', c => c.id === 'CLF-099');
+  db.deleteMany('calf_growth_records', r => r.calf_id === 'CLF-099');
+  db.deleteMany('animal_medications', m => m.animal_id === 'CLF-099');
+  db.deleteMany('animal_deworming_schedules', s => s.animal_id === 'CLF-099');
+  db.deleteMany('animal_deworming_records', r => r.animal_id === 'CLF-099');
+  db.deleteMany('veterinary_bills', b => b.id === 'BILL-099');
+  db.deleteMany('farm_expenses', e => e.id === 'EXP-VET-099' || e.reference_id === 'BILL-099');
+
   // Step 1: Register a buffalo
   console.log('▶ [Step 1] Registering a new Buffalo (BFL-099 "Sundari")...');
   const testBuffalo = {

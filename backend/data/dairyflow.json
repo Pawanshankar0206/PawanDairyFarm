@@ -219,33 +219,8 @@
       "previous_medical_history": "None",
       "notes": "Premium heifer milker",
       "status": "Lactating",
-      "created_at": "2026-11-04T03:14:27.743Z",
-      "updated_at": "2026-11-04T03:14:27.743Z"
-    },
-    {
-      "id": "BFL-099",
-      "name": "Sundari",
-      "tag_number": "AP-DF-099",
-      "photo_url": "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=600&q=80",
-      "breed": "Murrah",
-      "date_of_birth": "2022-03-15",
-      "age_years": 4,
-      "purchase_date": "2024-01-10",
-      "purchase_price": 135000,
-      "supplier_details": "Elite Haryana Syndicate",
-      "current_health_status": "Healthy",
-      "current_milk_production": 16,
-      "morning_milk": 8.5,
-      "evening_milk": 7.5,
-      "lactation_number": 1,
-      "breeding_status": "Open",
-      "pregnancy_status": "Not Pregnant",
-      "last_calving_date": null,
-      "previous_medical_history": "None",
-      "notes": "Premium heifer milker",
-      "status": "Active",
-      "created_at": "2026-11-04T03:14:47.124Z",
-      "updated_at": "2026-11-04T03:14:47.124Z"
+      "created_at": "2026-11-04T03:32:39.179Z",
+      "updated_at": "2026-11-04T03:32:39.179Z"
     }
   ],
   "buffalo_insemination_records": [
@@ -307,22 +282,7 @@
       "veterinary_center": "Government Vet Hospital",
       "insemination_cost": 650,
       "remarks": "Clear estrus signs, good uterine tone.",
-      "created_at": "2026-11-04T03:14:27.746Z"
-    },
-    {
-      "id": "INS-099",
-      "buffalo_id": "BFL-099",
-      "insemination_date": "2026-01-01",
-      "insemination_time": "07:30 AM",
-      "semen_date": "2025-10-10",
-      "semen_batch_details": "BAIF-MUR-9921",
-      "semen_straw_id": "STR-99882",
-      "bull_breed": "Murrah Elite Sultan Sire",
-      "technician_name": "Dr. K. Srinivas Murthy",
-      "veterinary_center": "Government Vet Hospital",
-      "insemination_cost": 650,
-      "remarks": "Clear estrus signs, good uterine tone.",
-      "created_at": "2026-11-04T03:14:47.126Z"
+      "created_at": "2026-11-04T03:32:39.181Z"
     }
   ],
   "buffalo_pregnancy_records": [
@@ -372,23 +332,7 @@
       "pregnancy_complications": "None",
       "vet_recommendations": "Begin pre-partum nutrition plan.",
       "is_active": false,
-      "created_at": "2026-11-04T03:14:27.749Z"
-    },
-    {
-      "id": "PREG-099",
-      "buffalo_id": "BFL-099",
-      "insemination_id": "INS-099",
-      "pregnancy_confirmation_date": "2026-03-01",
-      "pregnancy_test_result": "Positive",
-      "veterinary_examination": "Rectal exam confirmed right horn fetal membrane slip.",
-      "pregnancy_stage": "First Trimester (1-3 Mo)",
-      "gestation_days_setting": 310,
-      "expected_calving_date": "2026-11-07",
-      "actual_delivery_date": null,
-      "pregnancy_complications": "None",
-      "vet_recommendations": "Begin pre-partum nutrition plan.",
-      "is_active": true,
-      "created_at": "2026-11-04T03:14:47.130Z"
+      "created_at": "2026-11-04T03:32:39.184Z"
     }
   ],
   "buffalo_calving_records": [
@@ -435,22 +379,7 @@
       "veterinary_assistance": "Assisted by Farm Attendant",
       "delivery_expenses": 500,
       "notes": "Placenta discharged within 2 hours.",
-      "created_at": "2026-11-04T03:14:27.752Z"
-    },
-    {
-      "id": "CALV-099",
-      "buffalo_id": "BFL-099",
-      "actual_delivery_date": "2026-11-04",
-      "delivery_type": "Normal delivery",
-      "calf_born": true,
-      "calf_gender": "Female",
-      "calf_id": "CLF-099",
-      "birth_weight": 33.5,
-      "health_condition": "Healthy, vigorous",
-      "veterinary_assistance": "Assisted by Farm Attendant",
-      "delivery_expenses": 500,
-      "notes": "Placenta discharged within 2 hours.",
-      "created_at": "2026-11-04T03:14:47.133Z"
+      "created_at": "2026-11-04T03:32:39.188Z"
     }
   ],
   "calves": [
@@ -552,27 +481,7 @@
       "deworming_status": "Due Soon",
       "notes": "Born to Buffalo BFL-099 via Normal delivery.",
       "status": "Active",
-      "created_at": "2026-11-04T03:14:27.757Z"
-    },
-    {
-      "id": "CLF-099",
-      "name": "Sundari Baby Heifer",
-      "photo_url": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80",
-      "mother_buffalo_id": "BFL-099",
-      "father_info": "Murrah Elite Sultan Sire (STR-99882)",
-      "gender": "Female",
-      "breed": "Murrah",
-      "birth_date": "2026-11-04",
-      "birth_weight": 33.5,
-      "current_weight": 33.5,
-      "health_status": "Healthy",
-      "birth_condition": "Normal",
-      "feeding_method": "Mother Milk / Colostrum",
-      "vaccination_status": "Pending",
-      "deworming_status": "Due Soon",
-      "notes": "Born to Buffalo BFL-099 via Normal delivery.",
-      "status": "Active",
-      "created_at": "2026-11-04T03:14:47.138Z"
+      "created_at": "2026-11-04T03:32:39.192Z"
     }
   ],
   "calf_growth_records": [
@@ -682,7 +591,7 @@
       "health_observations": "Birth weight measurement.",
       "feeding_observations": "Given 2.5L colostrum.",
       "notes": "Birth entry",
-      "created_at": "2026-11-04T03:14:27.759Z"
+      "created_at": "2026-11-04T03:32:39.193Z"
     },
     {
       "id": "GRW-099-2",
@@ -694,31 +603,7 @@
       "health_observations": "Steady suckling reflex.",
       "feeding_observations": "Mother milk + calf starter nibbles.",
       "notes": "Month 1 checkup",
-      "created_at": "2026-11-04T03:14:27.761Z"
-    },
-    {
-      "id": "GRW-099-1",
-      "calf_id": "CLF-099",
-      "measurement_date": "2026-11-04",
-      "current_weight": 33.5,
-      "height": 65,
-      "weight_gain_since_last": 0,
-      "health_observations": "Birth weight measurement.",
-      "feeding_observations": "Given 2.5L colostrum.",
-      "notes": "Birth entry",
-      "created_at": "2026-11-04T03:14:47.140Z"
-    },
-    {
-      "id": "GRW-099-2",
-      "calf_id": "CLF-099",
-      "measurement_date": "2026-12-04",
-      "current_weight": 42,
-      "height": 72,
-      "weight_gain_since_last": 8.5,
-      "health_observations": "Steady suckling reflex.",
-      "feeding_observations": "Mother milk + calf starter nibbles.",
-      "notes": "Month 1 checkup",
-      "created_at": "2026-11-04T03:14:47.141Z"
+      "created_at": "2026-11-04T03:32:39.195Z"
     }
   ],
   "calf_feeding_records": [
@@ -840,7 +725,7 @@
       "next_recommended_date": "2027-02-04",
       "prescription_attachment": "",
       "remarks": "Oral syringe dosing completed smoothly.",
-      "created_at": "2026-11-04T03:14:47.168Z"
+      "created_at": "2026-11-04T03:32:39.224Z"
     }
   ],
   "animal_deworming_schedules": [
@@ -942,20 +827,7 @@
       "status": "Completed",
       "completed_record_id": "DWR-099",
       "sms_reminders_sent": [],
-      "created_at": "2026-11-04T03:14:27.766Z"
-    },
-    {
-      "id": "DWS-099",
-      "animal_type": "Calf",
-      "animal_id": "CLF-099",
-      "animal_name": "Sundari Baby Heifer",
-      "scheduled_date": "2026-11-04",
-      "medicine_recommended": "Pyrantel Pamoate (Nemocid syrup)",
-      "dosage_recommended": "15 ml prescribed by veterinarian",
-      "status": "Due Today",
-      "completed_record_id": null,
-      "sms_reminders_sent": [],
-      "created_at": "2026-11-04T03:14:47.146Z"
+      "created_at": "2026-11-04T03:32:39.200Z"
     }
   ],
   "animal_vaccination_records": [
@@ -1075,29 +947,7 @@
       "follow_up_date": "2026-11-10",
       "additional_notes": "Clean umbilical stump.",
       "bill_id": null,
-      "created_at": "2026-11-04T03:14:27.764Z"
-    },
-    {
-      "id": "MED-099",
-      "animal_type": "Calf",
-      "animal_id": "CLF-099",
-      "animal_name": "Sundari Baby Heifer",
-      "treatment_date": "2026-11-05",
-      "medicine_name": "Navel Disinfectant & Vitamin Tonic",
-      "medicine_category": "Supportive",
-      "disease_issue": "Preventive Navel Care",
-      "medicine_dosage": "5 ml oral daily",
-      "frequency": "Once daily",
-      "treatment_duration": "3 days",
-      "administration_method": "Topical & Oral",
-      "vet_doctor": "Dr. K. Srinivas Murthy",
-      "prescription_upload": "",
-      "medication_cost": 150,
-      "status": "Completed",
-      "follow_up_date": "2026-11-10",
-      "additional_notes": "Clean umbilical stump.",
-      "bill_id": null,
-      "created_at": "2026-11-04T03:14:47.144Z"
+      "created_at": "2026-11-04T03:32:39.198Z"
     }
   ],
   "veterinary_visits": [
@@ -1260,6 +1110,105 @@
       ],
       "linked_expense_id": "EXP-VET-099",
       "created_at": "2026-11-04T03:14:47.171Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T03:31:33.430Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T03:32:08.493Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T03:32:39.227Z"
     }
   ],
   "sms_notification_settings": {
@@ -1382,6 +1331,102 @@
       "provider_message_id": "SIM-087165",
       "error_message": "",
       "sent_at": "2026-11-04T03:14:47.165Z"
+    },
+    {
+      "id": "SMS-093419",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T03:31:33.419Z"
+    },
+    {
+      "id": "SMS-093424",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-093424",
+      "error_message": "",
+      "sent_at": "2026-11-04T03:31:33.424Z"
+    },
+    {
+      "id": "SMS-128482",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T03:32:08.482Z"
+    },
+    {
+      "id": "SMS-128486",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-128486",
+      "error_message": "",
+      "sent_at": "2026-11-04T03:32:08.486Z"
+    },
+    {
+      "id": "SMS-159216",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T03:32:39.216Z"
+    },
+    {
+      "id": "SMS-159220",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-159220",
+      "error_message": "",
+      "sent_at": "2026-11-04T03:32:39.220Z"
     }
   ],
   "cattle": [
