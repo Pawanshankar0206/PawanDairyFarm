@@ -1,7 +1,27 @@
 # 🌾 DairyFlow — Enterprise Dairy Farm & Livestock Management System
 ## Buffalo Management | Calf Management | Breeding & Pregnancy | Deworming | Veterinary Records | SMS Alerts | Admin & RBAC
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPawanshankar0206%2FPawanDairyFarm)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Pawanshankar0206%2FPawanDairyFarm-blue?logo=github)](https://github.com/Pawanshankar0206/PawanDairyFarm)
+
 DairyFlow is a production-grade digital dairy farm management headquarters designed to monitor adult buffaloes, calves, and cows across their full lifecycle, automate breeding and health schedules, dispatch SMS veterinary alerts, track itemized medical billing without double-counting, and provide deep financial analytics.
+
+---
+
+## 🌐 Live Deployment & Links
+
+- **GitHub Repository**: [https://github.com/Pawanshankar0206/PawanDairyFarm](https://github.com/Pawanshankar0206/PawanDairyFarm)
+- **1-Click Vercel Deployment**: [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPawanshankar0206%2FPawanDairyFarm)
+
+### How to Deploy to Your Vercel Account:
+1. Click the **[Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPawanshankar0206%2FPawanDairyFarm)** button or link above.
+2. Sign in with your Vercel account.
+3. Select your GitHub account (`Pawanshankar0206`).
+4. Keep the default settings (they are automatically read from `vercel.json`):
+   - **Framework Preset**: Other / Vite
+   - **Build Command**: `cd frontend && npm install && npm run build`
+   - **Output Directory**: `frontend/dist`
+5. Click **Deploy**. Vercel will build and assign your production domain (e.g. `https://pawandairyfarm.vercel.app`).
 
 ---
 
