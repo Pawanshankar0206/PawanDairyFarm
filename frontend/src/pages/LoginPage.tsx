@@ -90,12 +90,14 @@ export const LoginPage: React.FC = () => {
     setIsLoading(true);
     try {
       await signup({
-        full_name: fullName,
-        username: signupUsername,
-        email: signupEmail,
-        mobile_number: signupMobile,
+        full_name: fullName.trim(),
+        username: signupUsername.trim(),
+        email: signupEmail.trim(),
+        mobile_number: signupMobile.trim(),
         password: signupPassword,
-        role: signupRole
+        confirm_password: signupConfirmPassword,
+        role: signupRole,
+        agreed_to_terms: agreedToTerms
       });
       setSuccessMessage('Account created successfully! Welcome to DairyFlow.');
     } catch (err: any) {

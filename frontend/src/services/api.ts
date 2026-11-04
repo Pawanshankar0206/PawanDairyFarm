@@ -15,11 +15,9 @@ async function handleResponse<T>(res: Response): Promise<T> {
       const data = await res.json();
       errMessage = data.error || data.message || errMessage;
     } catch {
-      if (res.status === 500) {
-        errMessage = 'Server error (500). Please check your connection or try again in a few moments.';
-      } else {
-        errMessage = `${res.status} ${res.statusText || 'Error'}`.trim();
-      }
+      errMessage = res.status === 500
+        ? 'Internal Server Error (500). Please check backend server logs.'
+        : `${res.status} ${res.statusText || 'Error'}`.trim();
     }
     throw new Error(errMessage);
   }
@@ -27,7 +25,6 @@ async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export const api = {
-  // Generic methods
   async get<T>(url: string): Promise<T> {
     const res = await fetch(`${API_BASE}${url}`, {
       headers: getAuthHeaders()

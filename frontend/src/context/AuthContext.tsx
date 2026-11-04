@@ -8,7 +8,9 @@ interface SignupData {
   email: string;
   mobile_number?: string;
   password: string;
+  confirm_password?: string;
   role?: UserRole;
+  agreed_to_terms?: boolean;
 }
 
 interface AuthContextType {

@@ -81,6 +81,18 @@
       "status": "Active",
       "last_login": "2026-11-04T04:02:40.473Z",
       "created_at": "2026-11-04T04:02:40.473Z"
+    },
+    {
+      "id": "USR-007",
+      "full_name": "Pawan Shankar",
+      "username": "Pawan_1606",
+      "email": "pawanshankardurisetti@gmail.com",
+      "mobile_number": "6305869563",
+      "password_hash": "$2b$10$2BuR2E9Ha/BYbcSl/nHZPOhlLEznO1StIpd35e5qUk4aKv1A5GdUq",
+      "role": "Owner / Super Admin",
+      "status": "Active",
+      "last_login": "2026-11-04T04:19:00.959Z",
+      "created_at": "2026-11-04T04:19:00.847Z"
     }
   ],
   "buffaloes": [
@@ -231,8 +243,8 @@
       "previous_medical_history": "None",
       "notes": "Premium heifer milker",
       "status": "Lactating",
-      "created_at": "2026-11-04T04:08:39.170Z",
-      "updated_at": "2026-11-04T04:08:39.170Z"
+      "created_at": "2026-11-04T04:19:21.574Z",
+      "updated_at": "2026-11-04T04:19:21.574Z"
     }
   ],
   "buffalo_insemination_records": [
@@ -294,7 +306,7 @@
       "veterinary_center": "Government Vet Hospital",
       "insemination_cost": 650,
       "remarks": "Clear estrus signs, good uterine tone.",
-      "created_at": "2026-11-04T04:08:39.174Z"
+      "created_at": "2026-11-04T04:19:21.577Z"
     }
   ],
   "buffalo_pregnancy_records": [
@@ -344,7 +356,7 @@
       "pregnancy_complications": "None",
       "vet_recommendations": "Begin pre-partum nutrition plan.",
       "is_active": false,
-      "created_at": "2026-11-04T04:08:39.178Z"
+      "created_at": "2026-11-04T04:19:21.583Z"
     }
   ],
   "buffalo_calving_records": [
@@ -391,7 +403,7 @@
       "veterinary_assistance": "Assisted by Farm Attendant",
       "delivery_expenses": 500,
       "notes": "Placenta discharged within 2 hours.",
-      "created_at": "2026-11-04T04:08:39.183Z"
+      "created_at": "2026-11-04T04:19:21.590Z"
     }
   ],
   "calves": [
@@ -493,7 +505,7 @@
       "deworming_status": "Due Soon",
       "notes": "Born to Buffalo BFL-099 via Normal delivery.",
       "status": "Active",
-      "created_at": "2026-11-04T04:08:39.191Z"
+      "created_at": "2026-11-04T04:19:21.595Z"
     }
   ],
   "calf_growth_records": [
@@ -603,7 +615,7 @@
       "health_observations": "Birth weight measurement.",
       "feeding_observations": "Given 2.5L colostrum.",
       "notes": "Birth entry",
-      "created_at": "2026-11-04T04:08:39.196Z"
+      "created_at": "2026-11-04T04:19:21.597Z"
     },
     {
       "id": "GRW-099-2",
@@ -615,7 +627,7 @@
       "health_observations": "Steady suckling reflex.",
       "feeding_observations": "Mother milk + calf starter nibbles.",
       "notes": "Month 1 checkup",
-      "created_at": "2026-11-04T04:08:39.198Z"
+      "created_at": "2026-11-04T04:19:21.598Z"
     }
   ],
   "calf_feeding_records": [
@@ -737,7 +749,7 @@
       "next_recommended_date": "2027-02-04",
       "prescription_attachment": "",
       "remarks": "Oral syringe dosing completed smoothly.",
-      "created_at": "2026-11-04T04:08:39.235Z"
+      "created_at": "2026-11-04T04:19:21.634Z"
     }
   ],
   "animal_deworming_schedules": [
@@ -839,7 +851,7 @@
       "status": "Completed",
       "completed_record_id": "DWR-099",
       "sms_reminders_sent": [],
-      "created_at": "2026-11-04T04:08:39.204Z"
+      "created_at": "2026-11-04T04:19:21.605Z"
     }
   ],
   "animal_vaccination_records": [
@@ -959,7 +971,7 @@
       "follow_up_date": "2026-11-10",
       "additional_notes": "Clean umbilical stump.",
       "bill_id": null,
-      "created_at": "2026-11-04T04:08:39.202Z"
+      "created_at": "2026-11-04T04:19:21.603Z"
     }
   ],
   "veterinary_visits": [
@@ -1353,6 +1365,72 @@
       ],
       "linked_expense_id": "EXP-VET-099",
       "created_at": "2026-11-04T04:08:39.240Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T04:17:30.072Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T04:19:21.639Z"
     }
   ],
   "sms_notification_settings": {
@@ -1699,6 +1777,102 @@
       "provider_message_id": "SIM-319231",
       "error_message": "",
       "sent_at": "2026-11-04T04:08:39.231Z"
+    },
+    {
+      "id": "SMS-850057",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T04:17:30.057Z"
+    },
+    {
+      "id": "SMS-850062",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-850062",
+      "error_message": "",
+      "sent_at": "2026-11-04T04:17:30.062Z"
+    },
+    {
+      "id": "SMS-940850",
+      "animal_type": "System",
+      "animal_id": "USR-007",
+      "animal_name": "Pawan Shankar",
+      "event_type": "Account_Activation",
+      "reminder_interval": "N/A",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "6305869563",
+      "message_text": "DAIRYFLOW: Welcome Pawan Shankar! Your account has been activated with role Owner / Super Admin.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T04:19:00.850Z"
+    },
+    {
+      "id": "SMS-941053",
+      "animal_type": "System",
+      "animal_id": "USR-008",
+      "animal_name": "SMS Worker",
+      "event_type": "Account_Activation",
+      "reminder_interval": "N/A",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919111122222",
+      "message_text": "DAIRYFLOW: Welcome SMS Worker! Your account has been activated with role Farm Worker.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T04:19:01.053Z"
+    },
+    {
+      "id": "SMS-961624",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T04:19:21.624Z"
+    },
+    {
+      "id": "SMS-961629",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-961629",
+      "error_message": "",
+      "sent_at": "2026-11-04T04:19:21.629Z"
     }
   ],
   "cattle": [
@@ -2046,6 +2220,60 @@
       "module": "Auth",
       "details": "New user registered with role Farm Manager",
       "timestamp": "2026-11-04T04:02:40.475Z"
+    },
+    {
+      "id": "AUD-907353",
+      "user_id": "USR-007",
+      "username": "Pawan_1606",
+      "action": "SIGNUP_SUCCESS",
+      "module": "Auth",
+      "details": "New user registered as Owner / Super Admin",
+      "timestamp": "2026-11-04T04:18:27.353Z"
+    },
+    {
+      "id": "AUD-907483",
+      "user_id": "USR-007",
+      "username": "Pawan_1606",
+      "action": "LOGIN_SUCCESS",
+      "module": "Auth",
+      "details": "User logged in from 127.0.0.1",
+      "timestamp": "2026-11-04T04:18:27.483Z"
+    },
+    {
+      "id": "AUD-907574",
+      "user_id": "USR-008",
+      "username": "sms_worker_test",
+      "action": "SIGNUP_SUCCESS",
+      "module": "Auth",
+      "details": "New user registered as Farm Worker",
+      "timestamp": "2026-11-04T04:18:27.574Z"
+    },
+    {
+      "id": "AUD-940849",
+      "user_id": "USR-007",
+      "username": "Pawan_1606",
+      "action": "SIGNUP_SUCCESS",
+      "module": "Auth",
+      "details": "New user registered as Owner / Super Admin",
+      "timestamp": "2026-11-04T04:19:00.849Z"
+    },
+    {
+      "id": "AUD-940961",
+      "user_id": "USR-007",
+      "username": "Pawan_1606",
+      "action": "LOGIN_SUCCESS",
+      "module": "Auth",
+      "details": "User logged in from 127.0.0.1",
+      "timestamp": "2026-11-04T04:19:00.961Z"
+    },
+    {
+      "id": "AUD-941051",
+      "user_id": "USR-008",
+      "username": "sms_worker_test",
+      "action": "SIGNUP_SUCCESS",
+      "module": "Auth",
+      "details": "New user registered as Farm Worker",
+      "timestamp": "2026-11-04T04:19:01.051Z"
     }
   ]
 }

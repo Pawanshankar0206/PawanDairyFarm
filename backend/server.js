@@ -22,7 +22,20 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+
+// Safe body parser that respects pre-parsed bodies on Vercel
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === 'object') {
+    return next();
+  }
+  express.json()(req, res, (err) => {
+    if (err) {
+      req.body = req.body || {};
+    }
+    next();
+  });
+});
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Normalize URL for both direct server execution and Vercel serverless functions
@@ -123,39 +136,70 @@ app.post('/api/auth/login', (req, res) => {
   }
 });
 
-// User Signup / Self-Registration
-app.post('/api/auth/signup', (req, res) => {
+// User Signup / Self-Registration (Supports both /api/auth/signup and /api/auth/register)
+const handleSignup = (req, res) => {
   try {
-    const { full_name, username, email, mobile_number, password, role } = req.body || {};
+    const {
+      full_name,
+      username,
+      email,
+      mobile_number,
+      mobile,
+      password,
+      confirm_password,
+      confirmPassword,
+      role,
+      agreed_to_terms,
+      agreedToTerms
+    } = req.body || {};
 
-    if (!full_name || !username || !email || !password) {
-      return res.status(400).json({ error: 'Full name, username, email, and password are required.' });
+    // 1. Validate Required Fields
+    if (!full_name || !full_name.trim()) {
+      return res.status(400).json({ error: 'Full name is required.' });
+    }
+    if (!username || !username.trim()) {
+      return res.status(400).json({ error: 'Username is required.' });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ error: 'Email address is required.' });
+    }
+    if (!password) {
+      return res.status(400).json({ error: 'Password is required.' });
     }
 
-    if (username.length < 3) {
-      return res.status(400).json({ error: 'Username must be at least 3 characters.' });
-    }
-
+    // 2. Validate Password Length
     if (password.length < 6) {
       return res.status(400).json({ error: 'Password must be at least 6 characters long.' });
     }
 
-    const normalizedUsername = username.trim().toLowerCase();
-    const normalizedEmail = email.trim().toLowerCase();
-
-    const existing = db.getOne('farm_users', u =>
-      (u.username && u.username.toLowerCase() === normalizedUsername) ||
-      (u.email && u.email.toLowerCase() === normalizedEmail)
-    );
-
-    if (existing) {
-      return res.status(400).json({
-        error: existing.username && existing.username.toLowerCase() === normalizedUsername
-          ? 'Username is already taken. Please choose another.'
-          : 'An account with this email already exists.'
-      });
+    // 3. Validate Password Confirmation (if provided)
+    const effectiveConfirm = confirm_password || confirmPassword;
+    if (effectiveConfirm && password !== effectiveConfirm) {
+      return res.status(400).json({ error: 'Passwords do not match. Please verify and re-enter.' });
     }
 
+    // 4. Validate Compliance Checkbox (if passed)
+    if (agreed_to_terms !== undefined && agreed_to_terms === false) {
+      return res.status(400).json({ error: 'You must confirm compliance with DairyFlow operational standards.' });
+    }
+    if (agreedToTerms !== undefined && agreedToTerms === false) {
+      return res.status(400).json({ error: 'You must confirm compliance with DairyFlow operational standards.' });
+    }
+
+    // 5. Validate Email Format
+    const normalizedEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(normalizedEmail)) {
+      return res.status(400).json({ error: 'Please enter a valid email address.' });
+    }
+
+    // 6. Validate Mobile Format (if provided)
+    const effectiveMobile = (mobile_number || mobile || '').trim();
+    if (effectiveMobile && !/^[+0-9\s-]{7,16}$/.test(effectiveMobile)) {
+      return res.status(400).json({ error: 'Please enter a valid mobile number (e.g. +91 9876543210).' });
+    }
+
+    // 7. Validate Farm Role
     const validRoles = [
       'Owner / Super Admin',
       'Farm Manager',
@@ -164,9 +208,39 @@ app.post('/api/auth/signup', (req, res) => {
       'Farm Worker',
       'Read-only Viewer'
     ];
+    const requestedRole = (role && validRoles.includes(role)) ? role : 'Farm Manager';
 
-    const assignedRole = validRoles.includes(role) ? role : 'Farm Manager';
-    const newId = `USR-${String((db.get('farm_users').length + 1)).padStart(3, '0')}`;
+    // 8. Check for Existing Users (Duplicate username/email check -> HTTP 409)
+    const normalizedUsername = username.trim().toLowerCase();
+    const existingUsers = db.get('farm_users') || [];
+
+    const existingUsername = existingUsers.find(u => u.username && u.username.toLowerCase() === normalizedUsername);
+    if (existingUsername) {
+      return res.status(409).json({ error: 'Username is already taken. Please choose another username.' });
+    }
+
+    const existingEmail = existingUsers.find(u => u.email && u.email.toLowerCase() === normalizedEmail);
+    if (existingEmail) {
+      return res.status(409).json({ error: 'An account with this email address already exists. Please log in or use another email.' });
+    }
+
+    // 9. Enforce Super Admin / Owner Registration Security (Section 5)
+    // Allow the first primary Owner to register. If an active custom owner already exists, prevent unauthorized public privilege escalation.
+    if (requestedRole === 'Owner / Super Admin') {
+      const customOwnerExists = existingUsers.some(u =>
+        u.role === 'Owner / Super Admin' &&
+        u.username.toLowerCase() !== 'admin' &&
+        u.username.toLowerCase() !== normalizedUsername
+      );
+      if (customOwnerExists) {
+        return res.status(403).json({
+          error: 'An Owner / Super Admin account has already been registered for this farm. Additional Owner accounts must be created from inside the Admin Panel.'
+        });
+      }
+    }
+
+    // 10. Generate ID, Hash Password, and Persist User
+    const newId = `USR-${String(existingUsers.length + 1).padStart(3, '0')}`;
     const password_hash = bcrypt.hashSync(password, 10);
 
     const newUser = {
@@ -174,19 +248,44 @@ app.post('/api/auth/signup', (req, res) => {
       full_name: full_name.trim(),
       username: username.trim(),
       email: normalizedEmail,
-      mobile_number: (mobile_number || '').trim(),
+      mobile_number: effectiveMobile,
       password_hash,
-      role: assignedRole,
+      role: requestedRole,
       status: 'Active',
       last_login: new Date().toISOString(),
       created_at: new Date().toISOString()
     };
 
     db.insert('farm_users', newUser);
-    db.logAudit(newUser.id, newUser.username, 'SIGNUP_SUCCESS', 'Auth', `New user registered with role ${assignedRole}`);
+    db.logAudit(newUser.id, newUser.username, 'SIGNUP_SUCCESS', 'Auth', `New user registered as ${requestedRole}`);
 
+    // 11. Optional SMS Alert (Section 6: Must never crash or rollback registration)
+    if (newUser.mobile_number) {
+      try {
+        SMSService.sendSMS({
+          recipientPhone: newUser.mobile_number,
+          messageText: `DAIRYFLOW: Welcome ${newUser.full_name}! Your account has been activated with role ${newUser.role}.`,
+          animalType: 'System',
+          animalId: newUser.id,
+          animalName: newUser.full_name,
+          eventType: 'Account_Activation'
+        }).catch(smsErr => {
+          console.warn('Optional welcome SMS not dispatched (gateway unconfigured):', smsErr.message);
+        });
+      } catch (smsErr) {
+        console.warn('Optional welcome SMS dispatch caught:', smsErr.message);
+      }
+    }
+
+    // 12. Sign JWT Token and Return HTTP 201 Created
     const token = jwt.sign(
-      { id: newUser.id, username: newUser.username, email: newUser.email, role: newUser.role, full_name: newUser.full_name },
+      {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email,
+        role: newUser.role,
+        full_name: newUser.full_name
+      },
       JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -205,16 +304,13 @@ app.post('/api/auth/signup', (req, res) => {
       }
     });
   } catch (err) {
-    console.error('Error during signup:', err);
-    return res.status(500).json({ error: err.message || 'Signup failed due to a server error.' });
+    console.error('Unexpected error during registration:', err);
+    return res.status(500).json({ error: err.message || 'Internal server error during account creation.' });
   }
-});
-      role: newUser.role,
-      mobile_number: newUser.mobile_number,
-      status: newUser.status
-    }
-  });
-});
+};
+
+app.post('/api/auth/signup', handleSignup);
+app.post('/api/auth/register', handleSignup);
 
 // Current User Profile
 app.get('/api/auth/me', authenticate, (req, res) => {
