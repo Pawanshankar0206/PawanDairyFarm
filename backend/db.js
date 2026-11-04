@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const SOURCE_DB_FILE = path.join(__dirname, 'data', 'dairyflow.json');
 const DATA_DIR = process.env.VERCEL ? '/tmp' : path.join(__dirname, 'data');
 const DB_FILE = path.join(DATA_DIR, 'dairyflow.json');
 
@@ -1305,6 +1306,17 @@ class Database {
 
   init() {
     if (!fs.existsSync(DB_FILE)) {
+      if (fs.existsSync(SOURCE_DB_FILE)) {
+        try {
+          const raw = fs.readFileSync(SOURCE_DB_FILE, 'utf-8');
+          this.data = JSON.parse(raw);
+          this.save();
+          console.log('✅ Initialized DairyFlow persistent database from source file.');
+          return;
+        } catch (e) {
+          console.error('Failed to copy source DB file, falling back to seed:', e);
+        }
+      }
       this.data = getInitialData();
       this.save();
       console.log('✅ Initialized DairyFlow persistent database with realistic seed data.');

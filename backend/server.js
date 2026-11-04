@@ -25,6 +25,22 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Normalize URL for both direct server execution and Vercel serverless functions
+app.use((req, res, next) => {
+  if (!req.url.startsWith('/api') && !req.url.startsWith('/uploads')) {
+    const knownApiPrefixes = [
+      '/auth', '/buffaloes', '/calves', '/breeding', '/deworming',
+      '/veterinary', '/dashboard', '/health-calendar', '/cattle',
+      '/customers', '/milk-deliveries', '/customer-bills',
+      '/farm-finances', '/sms', '/users', '/setup', '/settings'
+    ];
+    if (knownApiPrefixes.some(prefix => req.url.startsWith(prefix))) {
+      req.url = `/api${req.url}`;
+    }
+  }
+  next();
+});
+
 // Configure Multer for file uploads (prescriptions, animal photos, receipts)
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -1820,39 +1836,50 @@ app.get('/api/audit-logs', authenticate, authorizeRoles(ROLES.SUPER_ADMIN), (req
    11. AUTOMATED BACKGROUND SMS SCHEDULER
 ============================================================ */
 
-// Run scheduled check every 15 minutes in background
-cron.schedule('*/15 * * * *', async () => {
-  console.log('⏰ [Scheduler] Running automated health & deworming SMS reminder check...');
-  try {
-    const result = await SMSService.checkAndSendScheduledReminders();
-    console.log(`✅ [Scheduler] Completed. Sent ${result.sent} notifications.`);
-  } catch (err) {
-    console.error('❌ [Scheduler] Error during scheduled check:', err);
-  }
-});
+if (!process.env.VERCEL) {
+  // Run scheduled check every 15 minutes in background
+  cron.schedule('*/15 * * * *', async () => {
+    console.log('⏰ [Scheduler] Running automated health & deworming SMS reminder check...');
+    try {
+      const result = await SMSService.checkAndSendScheduledReminders();
+      console.log(`✅ [Scheduler] Completed. Sent ${result.sent} notifications.`);
+    } catch (err) {
+      console.error('❌ [Scheduler] Error during scheduled check:', err);
+    }
+  });
 
-// Also trigger once upon server boot
-setTimeout(async () => {
-  console.log('🚀 [Boot] Running initial health reminder check...');
-  try {
-    const result = await SMSService.checkAndSendScheduledReminders();
-    console.log(`✅ [Boot] Checked ${result.checked} schedules. Sent ${result.sent} alerts.`);
-  } catch (err) {
-    console.error('❌ [Boot] Initial check error:', err);
-  }
-}, 3000);
+  // Also trigger once upon server boot
+  setTimeout(async () => {
+    console.log('🚀 [Boot] Running initial health reminder check...');
+    try {
+      const result = await SMSService.checkAndSendScheduledReminders();
+      console.log(`✅ [Boot] Checked ${result.checked} schedules. Sent ${result.sent} alerts.`);
+    } catch (err) {
+      console.error('❌ [Boot] Initial check error:', err);
+    }
+  }, 3000);
+}
 
 // Serve Built Frontend (Production Mode)
 const distPath = path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-  app.get('*', (req, res, next) => {
+  // Safe SPA fallback in Express 5
+  app.use((req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
       return next();
     }
     res.sendFile(path.join(distPath, 'index.html'));
   });
 }
+
+// Global Error Handler to guarantee JSON responses (prevents HTML 500 pages)
+app.use((err, req, res, next) => {
+  console.error('Unhandled Server Error:', err);
+  res.status(err.status || 500).json({
+    error: err.message || 'Internal Server Error'
+  });
+});
 
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {

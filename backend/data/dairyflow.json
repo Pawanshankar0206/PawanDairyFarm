@@ -19,7 +19,7 @@
       "password_hash": "$2b$10$OXgVJXnhWu.fTeBeuF1pauE4sw5IPXPtqmh2fjgueUItuXlbn4cqK",
       "role": "Owner / Super Admin",
       "status": "Active",
-      "last_login": "2026-11-04T02:59:27.160Z",
+      "last_login": "2026-11-04T04:02:40.392Z",
       "created_at": "2026-01-15T08:00:00Z"
     },
     {
@@ -69,6 +69,18 @@
       "status": "Active",
       "last_login": "2026-11-03T06:30:00Z",
       "created_at": "2026-03-15T08:00:00Z"
+    },
+    {
+      "id": "USR-006",
+      "full_name": "Pawan Tester",
+      "username": "user_1793764960409",
+      "email": "user_1793764960409@test.com",
+      "mobile_number": "+919988776655",
+      "password_hash": "$2b$10$wL21b9.A4Ay6RIyg53D0l.hJlzk58vAodDwucsnG5Fu7aDFoZiHWu",
+      "role": "Farm Manager",
+      "status": "Active",
+      "last_login": "2026-11-04T04:02:40.473Z",
+      "created_at": "2026-11-04T04:02:40.473Z"
     }
   ],
   "buffaloes": [
@@ -219,8 +231,8 @@
       "previous_medical_history": "None",
       "notes": "Premium heifer milker",
       "status": "Lactating",
-      "created_at": "2026-11-04T03:48:38.195Z",
-      "updated_at": "2026-11-04T03:48:38.195Z"
+      "created_at": "2026-11-04T04:02:58.555Z",
+      "updated_at": "2026-11-04T04:02:58.555Z"
     }
   ],
   "buffalo_insemination_records": [
@@ -282,7 +294,7 @@
       "veterinary_center": "Government Vet Hospital",
       "insemination_cost": 650,
       "remarks": "Clear estrus signs, good uterine tone.",
-      "created_at": "2026-11-04T03:48:38.196Z"
+      "created_at": "2026-11-04T04:02:58.556Z"
     }
   ],
   "buffalo_pregnancy_records": [
@@ -332,7 +344,7 @@
       "pregnancy_complications": "None",
       "vet_recommendations": "Begin pre-partum nutrition plan.",
       "is_active": false,
-      "created_at": "2026-11-04T03:48:38.199Z"
+      "created_at": "2026-11-04T04:02:58.559Z"
     }
   ],
   "buffalo_calving_records": [
@@ -379,7 +391,7 @@
       "veterinary_assistance": "Assisted by Farm Attendant",
       "delivery_expenses": 500,
       "notes": "Placenta discharged within 2 hours.",
-      "created_at": "2026-11-04T03:48:38.202Z"
+      "created_at": "2026-11-04T04:02:58.562Z"
     }
   ],
   "calves": [
@@ -481,7 +493,7 @@
       "deworming_status": "Due Soon",
       "notes": "Born to Buffalo BFL-099 via Normal delivery.",
       "status": "Active",
-      "created_at": "2026-11-04T03:48:38.206Z"
+      "created_at": "2026-11-04T04:02:58.566Z"
     }
   ],
   "calf_growth_records": [
@@ -591,7 +603,7 @@
       "health_observations": "Birth weight measurement.",
       "feeding_observations": "Given 2.5L colostrum.",
       "notes": "Birth entry",
-      "created_at": "2026-11-04T03:48:38.207Z"
+      "created_at": "2026-11-04T04:02:58.567Z"
     },
     {
       "id": "GRW-099-2",
@@ -603,7 +615,7 @@
       "health_observations": "Steady suckling reflex.",
       "feeding_observations": "Mother milk + calf starter nibbles.",
       "notes": "Month 1 checkup",
-      "created_at": "2026-11-04T03:48:38.209Z"
+      "created_at": "2026-11-04T04:02:58.575Z"
     }
   ],
   "calf_feeding_records": [
@@ -725,7 +737,7 @@
       "next_recommended_date": "2027-02-04",
       "prescription_attachment": "",
       "remarks": "Oral syringe dosing completed smoothly.",
-      "created_at": "2026-11-04T03:48:38.233Z"
+      "created_at": "2026-11-04T04:02:58.600Z"
     }
   ],
   "animal_deworming_schedules": [
@@ -827,7 +839,7 @@
       "status": "Completed",
       "completed_record_id": "DWR-099",
       "sms_reminders_sent": [],
-      "created_at": "2026-11-04T03:48:38.213Z"
+      "created_at": "2026-11-04T04:02:58.580Z"
     }
   ],
   "animal_vaccination_records": [
@@ -947,7 +959,7 @@
       "follow_up_date": "2026-11-10",
       "additional_notes": "Clean umbilical stump.",
       "bill_id": null,
-      "created_at": "2026-11-04T03:48:38.212Z"
+      "created_at": "2026-11-04T04:02:58.579Z"
     }
   ],
   "veterinary_visits": [
@@ -1275,6 +1287,39 @@
       ],
       "linked_expense_id": "EXP-VET-099",
       "created_at": "2026-11-04T03:48:38.236Z"
+    },
+    {
+      "id": "VBILL-099",
+      "bill_number": "VET-2026-099",
+      "bill_date": "2026-11-04",
+      "animal_id": "CLF-099",
+      "animal_category": "Calf",
+      "supplier_clinic": "City Veterinary Medicals",
+      "bill_category": "Deworming",
+      "description": "Deworming medication & pediatric checkup for Calf CLF-099",
+      "quantity": 1,
+      "unit_price": 240,
+      "total_amount": 240,
+      "amount_paid": 240,
+      "outstanding_amount": 0,
+      "payment_method": "UPI / GPay",
+      "receipt_attachment": "",
+      "items": [
+        {
+          "description": "Pyrantel Pamoate syrup 100ml",
+          "quantity": 1,
+          "unit_price": 90,
+          "total": 90
+        },
+        {
+          "description": "Pediatric checkup fee",
+          "quantity": 1,
+          "unit_price": 150,
+          "total": 150
+        }
+      ],
+      "linked_expense_id": "EXP-VET-099",
+      "created_at": "2026-11-04T04:02:58.603Z"
     }
   ],
   "sms_notification_settings": {
@@ -1557,6 +1602,38 @@
       "provider_message_id": "SIM-118230",
       "error_message": "",
       "sent_at": "2026-11-04T03:48:38.230Z"
+    },
+    {
+      "id": "SMS-978594",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "msg91",
+      "status": "Failed",
+      "provider_message_id": "",
+      "error_message": "MSG91 AuthKey is not configured. Please enter your API Key in Settings -> SMS Notifications.",
+      "sent_at": "2026-11-04T04:02:58.594Z"
+    },
+    {
+      "id": "SMS-978597",
+      "animal_type": "Calf",
+      "animal_id": "CLF-099",
+      "animal_name": "Sundari Baby Heifer",
+      "event_type": "Deworming",
+      "reminder_interval": "due_today",
+      "scheduled_date": "2026-11-04",
+      "recipient_phone": "+919876543210",
+      "message_text": "DAIRYFLOW ALERT: Deworming is due today for Calf CLF-099. Please check the animal health schedule and record the treatment after completion.",
+      "provider": "simulator",
+      "status": "Delivered",
+      "provider_message_id": "SIM-978597",
+      "error_message": "",
+      "sent_at": "2026-11-04T04:02:58.597Z"
     }
   ],
   "cattle": [
@@ -1886,6 +1963,24 @@
       "module": "Notifications",
       "details": "Configured automated deworming reminder intervals (7d, 3d, 1d, due today, overdue).",
       "timestamp": "2026-11-04T07:00:00Z"
+    },
+    {
+      "id": "AUD-960394",
+      "user_id": "USR-001",
+      "username": "admin",
+      "action": "LOGIN_SUCCESS",
+      "module": "Auth",
+      "details": "User logged in from 127.0.0.1",
+      "timestamp": "2026-11-04T04:02:40.394Z"
+    },
+    {
+      "id": "AUD-960475",
+      "user_id": "USR-006",
+      "username": "user_1793764960409",
+      "action": "SIGNUP_SUCCESS",
+      "module": "Auth",
+      "details": "New user registered with role Farm Manager",
+      "timestamp": "2026-11-04T04:02:40.475Z"
     }
   ]
 }
